@@ -1873,6 +1873,26 @@ class QgridWidget(widgets.DOMWidget):
             'option_value': option_value
         })
 
+    def set_cell_css_styles(self, css_styles, hash):
+        """
+        Apply custom css styles to grid cells using the SlickGrid 
+        setCellCssStyles function. 
+        Parameters
+        ----------
+        css_styles : string 
+            Contains classes for css styles. 
+            For example ".highlighted {background-color: red}"
+
+        hash : Similar to the ones used by SlickGrid, A hash of cell CSS 
+        classes keyed by row number and then by column id. Multiple CSS 
+        classes can be specified and separated by space.
+        """
+        self.send({
+            'type': 'set_cell_css_styles',
+            'css_styles': css_styles,
+            'hash': hash
+        }) 
+
 
 # Alias for legacy support, since we changed the capitalization
 QGridWidget = QgridWidget

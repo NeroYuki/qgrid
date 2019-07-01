@@ -810,6 +810,14 @@ class QgridView extends widgets.DOMWidgetView {
       filter.handle_msg(msg);
     } else if (msg.type == 'show_context_menu'){
       this.show_context_menu(msg.x, msg.y, msg.cell, msg.items)
+    } else if (msg.type == 'set_cell_css_styles'){
+      var css_styles = msg.css_styles;
+      var hash = msg.hash;
+      if (!this.custome_cell_css_styles) {
+        this.custome_cell_css_styles = $(`<style type='text/css'></style>`).appendTo(this.$el);
+      }
+      this.custome_cell_css_styles.text(css_styles)
+      this.slick_grid.setCellCssStyles('custome_cell_css_styles', hash)
     }
   }
 
